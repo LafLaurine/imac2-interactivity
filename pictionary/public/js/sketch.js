@@ -1,49 +1,83 @@
-// Keep track of our socket connection
-var socket;
+//Keep trace of socket connection
+let socket
+let color = '#000'
+let strokeWidth = 4
+let cv
 
 function setup() {
-    createCanvas(800, 800);
-    background(0);
+    cv = createCanvas(windowWidth / 2, windowHeight / 2)
+    centerCanvas()
+    cv.background(255, 255, 255)
     // Start a socket connection to the server
-    // Some day we would run this server somewhere else
-    socket = io.connect('http://127.0.0.1:8080/');
+    socket = io.connect('http://localhost:3000')
     // We make a named event called 'mouse' and write an
     // anonymous callback function
-    socket.on('mouse',
-        // When we receive data
-        function (data) {
-            // Draw a blue circle
-            fill(0, 0, 255);
-            noStroke();
-            ellipse(data.x, data.y, 20, 20);
+    socket.on('mouse', data => {
+        stroke(data.color)
+        strokeWeight(data.strokeWidth)
+        line(data.x, data.y, data.px, data.py)
+    })
+
+    // Getting our buttons and the holder through the p5.js dom
+    const color_picker = select('#pickcolor')
+    const color_btn = select('#color-btn')
+    const color_holder = select('#color-holder')
+
+    const stroke_width_picker = select('#stroke-width-picker')
+    const stroke_btn = select('#stroke-btn')
+
+    // Adding a mousePressed listener to the button
+    color_btn.mousePressed(() => {
+        // Checking if the input is a valid hex color
+        if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(color_picker.value())) {
+            color = color_picker.value()
+            color_holder.style('background-color', color)
+        } else {
+            console.log('Enter a valid hex value')
         }
-    );
+    })
+
+    // Adding a mousePressed listener to the button
+    stroke_btn.mousePressed(() => {
+        const width = parseInt(stroke_width_picker.value())
+        if (width > 0) strokeWidth = width
+    })
 }
 
-function draw() {
-    // Nothing
+function centerCanvas() {
+    const x = (windowWidth - width) / 2
+    const y = (windowHeight - height) / 2
+    cv.position(x, y)
 }
+
 
 function mouseDragged() {
-    // Draw some white circles
-    fill(255);
-    noStroke();
-    ellipse(mouseX, mouseY, 20, 20);
+    // Draw
+    stroke(color)
+    strokeWeight(strokeWidth)
+    line(mouseX, mouseY, pmouseX, pmouseY)
+
     // Send the mouse coordinates
-    sendmouse(mouseX, mouseY);
+    sendMouse(mouseX, mouseY, pmouseX, pmouseY)
 }
 
-// Function for sending to the socket
-function sendmouse(xpos, ypos) {
-    // We are sending!
-    console.log("sendmouse: " + xpos + " " + ypos);
+// Sending data to the socket
+function sendMouse(x, y, pX, pY) {
+    const data = {
+        x: x,
+        y: y,
+        px: pX,
+        py: pY,
+        color: color,
+        strokeWidth: strokeWidth,
+    }
 
-    // Make a little object with  and y
-    var data = {
-        x: xpos,
-        y: ypos
-    };
+    socket.emit('mouse', data)
+}
 
-    // Send that object to the socket
-    socket.emit('mouse', data);
+//clear Canva
+function keyPressed() {
+    if (keyCode === ESCAPE) {
+        clear();
+    }
 }

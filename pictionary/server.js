@@ -1,41 +1,69 @@
-var express = require('express');
-var app = express();
-app.use(express.static('public'));
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+const http = require('http')
+const app = require('./app')
+let connectCounter = 0;
 
-server.listen(8080);
-app.use(express.static('public'));
-console.log("Server running on 127.0.0.1:8080");
-// WebSocket Portion
-// WebSockets work with the HTTP server
-var io = require('socket.io')(server);
+const normalizePort = val => {
+    const port = parseInt(val, 10)
 
-// Register a callback function to run when we have an individual connection
-// This is run for each individual user that connects
-io.sockets.on('connection',
-    // We are given a websocket object in our function
-    function (socket) {
-
-        console.log("We have a new client: " + socket.id);
-
-        // When this user emits, client side: socket.emit('otherevent',some data);
-        socket.on('mouse',
-            function (data) {
-                // Data comes in as whatever was sent, including objects
-                console.log("Received: 'mouse' " + data.x + " " + data.y);
-
-                // Send it to all other clients
-                socket.broadcast.emit('mouse', data);
-
-                // This is a way to send to everyone including sender
-                // io.sockets.emit('message', "this goes to everyone");
-
-            }
-        );
-
-        socket.on('disconnect', function () {
-            console.log("Client has disconnected");
-        });
+    if (isNaN(port)) {
+        return val
     }
-);
+    if (port >= 0) {
+        return port
+    }
+    return false
+}
+const port = normalizePort(process.env.PORT || '3000')
+app.set('port', port)
+
+const errorHandler = error => {
+    if (error.syscall !== 'listen') {
+        throw error
+    }
+    const address = server.address()
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges.')
+            process.exit(1)
+            break
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use.')
+            process.exit(1)
+            break
+        default:
+            throw error
+    }
+}
+
+const server = http.createServer(app)
+
+server.on('error', errorHandler)
+server.on('listening', () => {
+    const address = server.address()
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port
+    console.log('Listening on ' + bind)
+})
+
+
+// Web sockets
+const io = require('socket.io')(server)
+
+io.sockets.on('connection', (socket) => {
+    console.log('Client connected: ' + socket.id)
+    connectCounter++;
+    console.log(connectCounter)
+
+    if (connectCounter === 2) {
+        socket.on('mouse', (data) => socket.broadcast.emit('mouse', data))
+    } else {
+        console.log("There is not enough player");
+    }
+})
+
+io.sockets.on('disconnection', () => {
+    console.log('Client has disconnected')
+    connectCounter--;
+})
+
+server.listen(port)

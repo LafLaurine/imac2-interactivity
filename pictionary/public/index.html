@@ -3,14 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sockets Example</title>
+    <title>Interactivity - Let's draw</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
+    <script type="text/javascript" src="./libraries/p5.js"></script>
+    <script type="text/javascript" src="./libraries/p5.dom.js">
+    </script>
     <script type="text/javascript" src="js/sketch.js"></script>
 </head>
 
 <body>
+    <p>Choose color (# hex)</p>
+    <input type="text" name="custom_color" placeholder="#FFFFFF" id="pickcolor" class="call-picker" />
+    <div id="color-holder" class="color-holder call-picker"></div>
+    <button id="color-btn">Change color</button>
+    <br />
+    <p>Choose stroke width</p>
+    <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker" class="stroke_width_picker" />
+    <button id="stroke-btn">Change stroke width</button>
 </body>
 
 </html>
