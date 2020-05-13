@@ -5,10 +5,10 @@
 
 Works with node.js, express.js, socket.io and p5.js
 
-Reference : [Collaborative drawing canvas](http://code-and.coffee/post/2015/collaborative-drawing-canvas-node-websocket/)
+#### NodeJS
+You need to install [NodeJs](https://nodejs.org/en/) and run `npm install` on this folder on your first download to get dependencies.
 
-Run the app : 
+#### Run the app : 
 
-    npm install
-    node server.js
+``` node server.js```
 
