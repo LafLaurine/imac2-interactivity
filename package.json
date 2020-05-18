@@ -1,0 +1,9 @@
+{
+    "name": "Pictionary",
+    "description": "Collaborative drawing canvas",
+    "author": "Laurine Lafontaine and Victorine Maurel",
+    "dependencies": {
+        "express": "4.x",
+        "socket.io": "*"
+    }
+}

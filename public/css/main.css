@@ -1,0 +1,107 @@
+input.call-picker {
+    border: 1px solid #AAA;
+    color: #666;
+    text-transform: uppercase;
+    float: left;
+    outline: none;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 85px;
+}
+
+.color-picker {
+    width: 130px;
+    background: #F3F3F3;
+    height: 81px;
+    padding: 5px;
+    border: 5px solid #fff;
+    box-shadow: 0px 0px 3px 1px #DDD;
+    position: absolute;
+    top: 61px;
+    left: 2px;
+}
+
+.color-holder {
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #AAA;
+    width: 40px;
+    height: 36px;
+    float: left;
+    margin-left: 5px;
+}
+
+input.stroke_width_picker {
+    border: 1px solid #AAA;
+    color: #666;
+    text-transform: uppercase;
+    float: left;
+    outline: none;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 85px;
+}
+
+p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #DDD;
+}
+
+button {
+    margin-left: 1rem;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #373d55;
+}
+
+.users {
+    display: inline-block;
+    background-color: white;
+    width: 25%;
+    height: 505px;
+    margin: 10px 10px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+
+.grey-out {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #4A4A4A;
+    opacity: .8;
+    display: none;
+    z-index: 900;
+}
+
+.user {
+    position: relative;
+    background-color: white;
+    max-height: 300px;
+    max-width: 300px;
+    text-align: center;
+    padding: 25px 5px;
+    top: 20%;
+    margin: auto;
+    border-radius: 6px;
+}
+
+#username {
+    width: 90%;
+    font-size: 30px;
+    padding: 5px;
+    margin: 10px;
+}
+
+#submitname {
+    width: 70px;
+    height: 30px;
+    background-color: #9BCD9B;
+}
