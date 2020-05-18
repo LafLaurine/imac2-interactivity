@@ -2,6 +2,42 @@
 let socket
 let color = '#000'
 let strokeWidth = 4
+let user;
+let users = [];
+
+function submitUserName() {
+    event.preventDefault();
+    user = document.getElementById("username").value;
+
+    if (user == '') {
+        return false
+    };
+
+    var index = users.indexOf(user);
+
+    if (index > -1) {
+        alert(user + ' already exists');
+        return false
+    };
+
+    socket.emit('join', user, function (response) {
+        console.log("Join : " + response);
+    });
+
+    document.getElementsByClassName('grey-out')[0].style.display = "none";
+    document.getElementsByClassName('user')[0].style.display = "none";
+    document.getElementsByClassName('guess-input')[0].focus();
+}
+
+let userlist = function (names) {
+    users = names;
+    var html = '<p class="chatbox-header">' + 'Players' + '</p>';
+    for (var i = 0; i < names.length; i++) {
+        html += '<li>' + names[i] + '</li>';
+    };
+    document.getElementsByTagName('ul')[0].innerHTML = html;
+};
+
 
 function setUpSketch() {
     // Start a socket connection to the server
@@ -9,7 +45,6 @@ function setUpSketch() {
     // We make a named event called 'mouse' and write an
     // anonymous callback function
     socket.on('mouse', data => {
-        console.log(data)
         stroke(data.color)
         strokeWeight(data.strokeWidth)
         line(data.x, data.y, data.px, data.py)

@@ -36,6 +36,7 @@ function globalSetup() {
 function showPage(index) {
     pages.forEach(el => el.state = false);
     pages[index].state = true;
+    socket.on('userlist', userlist);
 }
 
 function draw() {
