@@ -25,6 +25,7 @@ function centerCanvas() {
 
 function globalSetup() {
     cv = createCanvas(windowWidth / 2, windowHeight / 2);
+    background(255);
     video = createCapture(VIDEO);
     video.size(width, height);
     video.hide();
@@ -40,7 +41,6 @@ function showPage(index) {
 function draw() {
     for (i = 0; i < pages.length; i++) {
         if (pages[i].state == true) {
-            background(255);
             pages[i].draw();
         }
     }
@@ -49,7 +49,6 @@ function draw() {
 function setup() {
     for (i = 0; i < pages.length; i++) {
         if (pages[i].state == true) {
-            background(255);
             globalSetup();
             pages[i].setup();
         }

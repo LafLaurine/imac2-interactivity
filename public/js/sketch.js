@@ -4,7 +4,6 @@ let color = '#000'
 let strokeWidth = 4
 
 function setUpSketch() {
-
     // Start a socket connection to the server
     socket = io.connect('http://localhost:3000')
     // We make a named event called 'mouse' and write an

@@ -54,11 +54,10 @@ io.sockets.on('connection', (socket) => {
     connectCounter++;
     console.log(connectCounter)
 
-    socket.on('mouse', (data) => socket.broadcast.emit('mouse', data));
-    console.log("yes");
-
     if (connectCounter !== 2) {
         console.log("There is not enough player");
+    } else {
+        socket.on('mouse', (data) => socket.broadcast.emit('mouse', data));
     }
 
     socket.on('disconnect', () => {
