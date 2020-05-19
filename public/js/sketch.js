@@ -35,7 +35,6 @@ let userlist = function (names) {
     for (var i = 0; i < names.length; i++) {
         html += '<li>' + names[i] + '</li>';
     };
-    console.log(html)
     document.getElementsByClassName('users')[0].innerHTML = html;
 };
 

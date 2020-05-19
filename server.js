@@ -88,11 +88,11 @@ io.sockets.on('connection', (socket) => {
             // place user into 'drawer' room
             socket.join('drawer');
             // server submits the 'drawer' event to this user
-            socket.broadcast.to(socket.username).emit('drawer', socket.username);
+            io.in(socket.username).emit('drawer', socket.username);
             console.log(socket.username + ' is a drawer');
 
             // send the random word to the user inside the 'drawer' room
-            socket.broadcast.to(socket.username).emit('draw word', newWord());
+            io.in(socket.username).emit('draw word', newWord());
             console.log(newWord());
             socket.on('mouse', (data) => socket.broadcast.emit('mouse', data));
 
@@ -100,7 +100,7 @@ io.sockets.on('connection', (socket) => {
             // additional users will join the 'guesser' room
             socket.join('guesser');
             // server submits the 'guesser' event to this user
-            socket.broadcast.to(socket.username).emit('guesser', socket.username);
+            io.in(socket.username).emit('guesser', socket.username);
             console.log(socket.username + ' is a guesser');
         }
 
