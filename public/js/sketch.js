@@ -61,6 +61,9 @@ function setUpSketch() {
     socket.on('guessword', guessword);
     socket.on('draw', draw);
     socket.on('draw word', drawWord);
+    socket.on('new drawer', newDrawer);
+    socket.on('correct answer', correctAnswer);
+    socket.on('reset', reset);
 }
 
 function mouseDragged() {
@@ -138,4 +141,20 @@ let guessword = function (data) {
 let drawWord = function (word) {
     document.getElementsByClassName('word')[0].innerHTML = word;
     console.log('Your word to draw is: ' + word);
+};
+
+let correctAnswer = function (data) {
+    document.getElementById('guesses').innerHTML = '<p>' + data.username + ' guessed correctly!' + '</p>';
+};
+
+var reset = function (name) {
+    document.getElementById('guesses').innerHTML = "";
+    console.log('New drawer: ' + name);
+    document.getElementById('guesses').innerHTML = '<p>' + name + ' is the new drawer' + '</p>';
+};
+
+var newDrawer = function () {
+    socket.emit('new drawer', user);
+    clear();
+    document.getElementById('guesses').innerHTML = "";
 };

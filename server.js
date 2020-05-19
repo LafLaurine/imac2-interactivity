@@ -122,6 +122,44 @@ io.sockets.on('connection', (socket) => {
         callback('ok');
     });
 
+    socket.on('new drawer', function (name) {
+
+        // remove user from 'guesser' room
+        socket.leave('guesser');
+
+        // place user into 'drawer' room
+        socket.join('drawer');
+        console.log('new drawer emit: ' + name);
+
+        // submit 'drawer' event to the same user
+        socket.emit('drawer', name);
+
+        // send a random word to the user connected to 'drawer' room
+        io.in('drawer').emit('draw word', newWord());
+
+    });
+
+    // initiated from drawer's 'dblclick' event in Player list
+    socket.on('swap rooms', function (data) {
+
+        // drawer leaves 'drawer' room and joins 'guesser' room
+        socket.leave('drawer');
+        socket.join('guesser');
+
+        // submit 'guesser' event to this user
+        socket.emit('guesser', socket.username);
+
+        // submit 'drawer' event to the name of user that was doubleclicked
+        io.in(data.to).emit('drawer', data.to);
+
+        // submit random word to new user drawer
+        io.in(data.to).emit('draw word', newWord());
+
+        io.emit('reset', data.to);
+
+    });
+
+
     socket.on('correct answer', function (data) {
         socket.broadcast.emit('correct answer', data);
         console.log(data.username + ' guessed correctly with ' + data.guessword);
