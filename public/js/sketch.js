@@ -3,7 +3,6 @@ let socket
 let strokeWidth = 4
 let user;
 let users = [];
-let click = false;
 
 function submitUserName() {
     event.preventDefault();
@@ -98,8 +97,6 @@ function keyPressed() {
 }
 
 let guesser = function () {
-    click = false;
-    console.log('draw status: ' + click);
     console.log('You are a guesser');
     document.getElementsByClassName('guess-input')[0].focus();
 };
@@ -122,10 +119,9 @@ function submitGuess() {
 }
 
 let guessword = function (data) {
-    document.getElementById('guesses').value = data.username + "'s guess: " + data.guessword;
-
-    if (click == true && data.guessword == document.getElementsByClassName('word')[0].value) {
-        console.log('guesser: ' + data.username + ' draw-word: ' + document.getElementsByClassName('word')[0].value);
+    document.getElementById('guesses').innerHTML = data.username + "'s guess: " + data.guessword;
+    if (data.guessword == document.getElementsByClassName('word')[0].innerHTML) {
+        console.log('guesser: ' + data.username + ' draw-word: ' + document.getElementsByClassName('word')[0].innerHTML);
         socket.emit('correct answer', {
             username: data.username,
             guessword: data.guessword
@@ -134,7 +130,8 @@ let guessword = function (data) {
             from: user,
             to: data.username
         });
-        click = false;
+    } else {
+        console.log("wrong answer");
     }
 };
 

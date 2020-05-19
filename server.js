@@ -74,7 +74,6 @@ server.on('listening', () => {
 const io = require('socket.io')(server)
 
 io.sockets.on('connection', (socket) => {
-    io.emit('userlist', users);
     socket.on('join', function (name) {
         socket.username = name;
         // user automatically joins a room under their own name
@@ -93,7 +92,6 @@ io.sockets.on('connection', (socket) => {
 
             // send the random word to the user inside the 'drawer' room
             io.in(socket.username).emit('draw word', newWord());
-            console.log(newWord());
             socket.on('mouse', (data) => socket.broadcast.emit('mouse', data));
 
         } else {
