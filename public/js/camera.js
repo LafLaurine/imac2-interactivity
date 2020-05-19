@@ -1,11 +1,23 @@
 let positions;
 
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+
 function drawWebcam() {
     image(prevFrame, 0, 0);
 
     loadPixels();
     video.loadPixels();
     prevFrame.loadPixels();
+    const rvb = hexToRgb(color);
 
     // Begin loop to walk through every pixel
     for (var x = 0; x < video.width; x++) {
@@ -26,14 +38,13 @@ function drawWebcam() {
 
             // Step 4, compare colors (previous vs. current)
             var diff = dist(r1, g1, b1, r2, g2, b2);
-
             // Step 5, How different are the colors?
             // If the color at that pixel has changed, then there is motion at that pixel.
             if (diff > threshold) {
                 // If motion, display red
-                pixels[loc] = 255;
-                pixels[loc + 1] = 0;
-                pixels[loc + 2] = 0;
+                pixels[loc] = rvb.r;
+                pixels[loc + 1] = rvb.g;
+                pixels[loc + 2] = rvb.b;
                 //  pixels[loc + 3] = 255;
             }
             /*else {

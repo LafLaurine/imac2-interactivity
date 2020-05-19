@@ -4,6 +4,7 @@ let cv;
 let prevFrame;
 // How different must a pixel be to be a "motion" pixel
 let threshold = 80;
+let color = '#000000'
 
 let pages = [{
         state: true,
@@ -37,6 +38,22 @@ function globalSetup() {
     centerCanvas();
     // Create an empty image the same size as the video
     prevFrame = createImage(video.width, video.height);
+
+    // Getting our buttons and the holder through the p5.js dom
+    const color_picker = select('#pickcolor')
+    const color_btn = select('#color-btn')
+    const color_holder = select('#color-holder')
+
+    // Adding a mousePressed listener to the button
+    color_btn.mousePressed(() => {
+        // Checking if the input is a valid hex color
+        if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(color_picker.value())) {
+            color = color_picker.value()
+            color_holder.style('background-color', color)
+        } else {
+            console.log('Enter a valid hex value')
+        }
+    })
 
 }
 
