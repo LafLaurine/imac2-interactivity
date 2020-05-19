@@ -3,6 +3,7 @@ let socket
 let strokeWidth = 4
 let user;
 let users = [];
+let click = false;
 
 function submitUserName() {
     event.preventDefault();
@@ -89,3 +90,50 @@ function keyPressed() {
         clear();
     }
 }
+
+let guesser = function () {
+    click = false;
+    console.log('draw status: ' + click);
+    document.getElementById('guess').style.display = "block";
+    console.log('You are a guesser');
+    document.getElementsByClassName('guess-input')[0].focus();
+};
+
+function submitGuess() {
+    event.preventDefault();
+    let guess = document.getElementsByClassName('guess-input')[0].value;
+
+    if (guess == '') {
+        return false
+    };
+
+    console.log(user + "'s guess: " + guess);
+    socket.emit('guessword', {
+        username: user,
+        guessword: guess
+    });
+
+    document.getElementsByClassName('guess-input')[0].value = "";
+}
+
+let guessword = function (data) {
+    document.getElementById('guesses').value = data.username + "'s guess: " + data.guessword;
+
+    if (click == true && data.guessword == document.getElementsByClassName('word')[0].value) {
+        console.log('guesser: ' + data.username + ' draw-word: ' + document.getElementsByClassName('word')[0].value);
+        socket.emit('correct answer', {
+            username: data.username,
+            guessword: data.guessword
+        });
+        socket.emit('swap rooms', {
+            from: user,
+            to: data.username
+        });
+        click = false;
+    }
+};
+
+let drawWord = function (word) {
+    document.getElementsByClassName('word')[0].value = word;
+    console.log('Your word to draw is: ' + word);
+};
