@@ -1,5 +1,9 @@
 let video;
 let cv;
+// Previous Frame
+let prevFrame;
+// How different must a pixel be to be a "motion" pixel
+let threshold = 80;
 
 let pages = [{
         state: true,
@@ -25,11 +29,14 @@ function centerCanvas() {
 
 function globalSetup() {
     cv = createCanvas(windowWidth / 2, windowHeight / 2);
+    pixelDensity(1);
     background(255);
     video = createCapture(VIDEO);
     video.size(width, height);
     video.hide();
     centerCanvas();
+    // Create an empty image the same size as the video
+    prevFrame = createImage(video.width, video.height);
 
 }
 
