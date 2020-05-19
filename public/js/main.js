@@ -60,14 +60,6 @@ function globalSetup() {
 function showPage(index) {
     pages.forEach(el => el.state = false);
     pages[index].state = true;
-    socket.on('userlist', userlist);
-    socket.on('guesser', guesser);
-    socket.on('guessword', guessword);
-    socket.on('draw', draw);
-    socket.on('draw word', drawWord);
-    socket.on('drawer', pictionary);
-    socket.on('new drawer', newDrawer);
-    socket.on('correct answer', correctAnswer);
 }
 
 function draw() {

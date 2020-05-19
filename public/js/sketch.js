@@ -35,7 +35,8 @@ let userlist = function (names) {
     for (var i = 0; i < names.length; i++) {
         html += '<li>' + names[i] + '</li>';
     };
-    document.getElementsByTagName('ul')[0].innerHTML = html;
+    console.log(html)
+    document.getElementsByClassName('users')[0].innerHTML = html;
 };
 
 
@@ -56,6 +57,12 @@ function setUpSketch() {
         const width = parseInt(stroke_width_picker.value())
         if (width > 0) strokeWidth = width
     })
+
+    socket.on('userlist', userlist);
+    socket.on('guesser', guesser);
+    socket.on('guessword', guessword);
+    socket.on('draw', draw);
+    socket.on('draw word', drawWord);
 }
 
 function mouseDragged() {
@@ -94,7 +101,6 @@ function keyPressed() {
 let guesser = function () {
     click = false;
     console.log('draw status: ' + click);
-    document.getElementById('guess').style.display = "block";
     console.log('You are a guesser');
     document.getElementsByClassName('guess-input')[0].focus();
 };
@@ -134,6 +140,6 @@ let guessword = function (data) {
 };
 
 let drawWord = function (word) {
-    document.getElementsByClassName('word')[0].value = word;
+    document.getElementsByClassName('word')[0].innerHTML = word;
     console.log('Your word to draw is: ' + word);
 };

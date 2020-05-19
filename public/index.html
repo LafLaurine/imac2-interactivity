@@ -23,6 +23,7 @@
             <button type="submit" id="submitname" onclick="submitUserName()">Submit</button>
         </form>
     </div>
+
     <p>Choose color (# hex)</p>
     <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
     <div id="color-holder" class="color-holder call-picker"></div>
@@ -32,6 +33,11 @@
     <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker" class="stroke_width_picker" />
     <button id="stroke-btn">Change stroke width</button>
 
+    <div class="row">
+        <div class="users">
+            <div id="guesses"></div>
+        </div>
+    </div>
     <div id="top-message">
         <div class="draw">
             <p>The secret word is: <span class="word"></span></p>
@@ -40,7 +46,6 @@
             Guess the word! <input name="guess" class="guess-input" type="text">
         </form>
         <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
-
     </div>
 </body>
 

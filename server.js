@@ -28,37 +28,35 @@ function newWord() {
 
 
 const normalizePort = val => {
-    const port = parseInt(val, 10)
+    const port = parseInt(val, 10);
 
     if (isNaN(port)) {
-        return val
+        return val;
     }
     if (port >= 0) {
-        return port
+        return port;
     }
-    return false
+    return false;
 }
 
-const port = normalizePort(process.env.PORT || '3000')
-app.set('port', port)
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 const errorHandler = error => {
     if (error.syscall !== 'listen') {
-        throw error
+        throw error;
     }
-    const address = server.address()
-    const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port
+    const address = server.address();
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
     switch (error.code) {
         case 'EACCES':
-            console.error(bind + ' requires elevated privileges.')
-            process.exit(1)
-            break
+            console.error(bind + ' requires elevated privileges.');
+            process.exit(1);
         case 'EADDRINUSE':
-            console.error(bind + ' is already in use.')
-            process.exit(1)
-            break
+            console.error(bind + ' is already in use.');
+            process.exit(1);
         default:
-            throw error
+            throw error;
     }
 }
 
@@ -76,7 +74,7 @@ server.on('listening', () => {
 const io = require('socket.io')(server)
 
 io.sockets.on('connection', (socket) => {
-    socket.broadcast.emit('userlist', users);
+    io.emit('userlist', users);
     socket.on('join', function (name) {
         socket.username = name;
         // user automatically joins a room under their own name
@@ -90,26 +88,26 @@ io.sockets.on('connection', (socket) => {
             // place user into 'drawer' room
             socket.join('drawer');
             // server submits the 'drawer' event to this user
-            socket.in(socket.username).emit('drawer', socket.username);
+            socket.broadcast.to(socket.username).emit('drawer', socket.username);
             console.log(socket.username + ' is a drawer');
 
             // send the random word to the user inside the 'drawer' room
-            socket.in(socket.username).emit('draw word', newWord());
+            socket.broadcast.to(socket.username).emit('draw word', newWord());
+            console.log(newWord());
             socket.on('mouse', (data) => socket.broadcast.emit('mouse', data));
+
         } else {
             // additional users will join the 'guesser' room
             socket.join('guesser');
             // server submits the 'guesser' event to this user
-            socket.in(socket.username).emit('guesser', socket.username);
+            socket.broadcast.to(socket.username).emit('guesser', socket.username);
             console.log(socket.username + ' is a guesser');
         }
 
         // update all clients with the list of users
-        socket.broadcast.emit('userlist', users);
+        io.emit('userlist', users);
 
     });
-
-
 
     // submit each client's guesses to all clients
     socket.on('guessword', function (data) {
@@ -121,8 +119,18 @@ io.sockets.on('connection', (socket) => {
     });
 
 
-    socket.on('disconnect', () => {
+    socket.on('set', function (status, callback) {
+        console.log(status);
+        callback('ok');
+    });
 
+    socket.on('correct answer', function (data) {
+        socket.broadcast.emit('correct answer', data);
+        console.log(data.username + ' guessed correctly with ' + data.guessword);
+    });
+
+
+    socket.on('disconnect', () => {
         for (var i = 0; i < users.length; i++) {
 
             // remove user from users list
@@ -133,57 +141,8 @@ io.sockets.on('connection', (socket) => {
         connectCounter--;
         console.log(socket.username + ' has disconnected, number of player : ' + connectCounter);
         // submit updated users list to all clients
-        socket.broadcast.emit('userlist', users);
-    })
-
-    socket.on('set', function (status, callback) {
-        console.log(status);
-        callback('ok');
+        io.emit('userlist', users);
     });
+});
 
-    socket.on('new drawer', function (name) {
-
-        // remove user from 'guesser' room
-        socket.leave('guesser');
-
-        // place user into 'drawer' room
-        socket.join('drawer');
-        console.log('new drawer emit: ' + name);
-
-        // submit 'drawer' event to the same user
-        socket.broadcast.emit('drawer', name);
-
-        // send a random word to the user connected to 'drawer' room
-        io.in('drawer').emit('draw word', newWord());
-
-    });
-
-    // initiated from drawer's 'dblclick' event in Player list
-    socket.on('swap rooms', function (data) {
-
-        // drawer leaves 'drawer' room and joins 'guesser' room
-        socket.leave('drawer');
-        socket.join('guesser');
-
-        // submit 'guesser' event to this user
-        socket.broadcast.emit('guesser', socket.username);
-
-        // submit 'drawer' event to the name of user that was doubleclicked
-        io.in(data.to).emit('drawer', data.to);
-
-        // submit random word to new user drawer
-        io.in(data.to).emit('draw word', newWord());
-
-        socket.broadcast.emit('reset', data.to);
-
-    });
-
-    socket.on('correct answer', function (data) {
-        socket.broadcast.emit('correct answer', data);
-        console.log(data.username + ' guessed correctly with ' + data.guessword);
-    });
-
-
-})
-
-server.listen(port)
+server.listen(port);
