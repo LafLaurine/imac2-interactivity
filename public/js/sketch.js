@@ -12,7 +12,7 @@ function submitUserName() {
         return false
     };
 
-    var index = users.indexOf(user);
+    let index = users.indexOf(user);
 
     if (index > -1) {
         alert(user + ' already exists');
@@ -30,8 +30,8 @@ function submitUserName() {
 
 let userlist = function (names) {
     users = names;
-    var html = '<p class="chatbox-header">' + 'Players' + '</p>';
-    for (var i = 0; i < names.length; i++) {
+    let html = '<p class="chatbox-header">' + 'Players' + '</p>';
+    for (let i = 0; i < names.length; i++) {
         html += '<li>' + names[i] + '</li>';
     };
     document.getElementsByClassName('users')[0].innerHTML = html;
@@ -147,13 +147,13 @@ let correctAnswer = function (data) {
     document.getElementById('guesses').innerHTML = '<p>' + data.username + ' guessed correctly!' + '</p>';
 };
 
-var reset = function (name) {
+let reset = function (name) {
     document.getElementById('guesses').innerHTML = "";
     console.log('New drawer: ' + name);
     document.getElementById('guesses').innerHTML = '<p>' + name + ' is the new drawer' + '</p>';
 };
 
-var newDrawer = function () {
+let newDrawer = function () {
     socket.emit('new drawer', user);
     clear();
     document.getElementById('guesses').innerHTML = "";

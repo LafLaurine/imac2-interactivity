@@ -4,9 +4,8 @@
 <head>
 	<title>Let's draw</title>
 	<link rel="icon" type="image/png" href="">
-	<link rel="stylesheet" href="css/acc.css" type="text/css" media="all">
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="all">
 	<link rel="icon" type="image/png" href="img/favicon.png" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -215,24 +214,6 @@
 		<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 			x="0px" y="0px" viewBox="0 0 1729.31 836.54" style="enable-background:new 0 0 1729.31 836.54;"
 			xml:space="preserve">
-			<style type="text/css">
-				.screen {
-					stroke: #3C3C3B;
-					stroke-width: 27;
-					stroke-miterlimit: 10;
-				}
-
-				.line {
-					fill: none;
-					stroke: #F18736;
-					stroke-width: 4;
-					stroke-miterlimit: 10;
-				}
-
-				.circles {
-					fill: #F18736;
-				}
-			</style>
 			<path class="screen" d="M1444.99,782.69H256.93c-43.12,0-78.08-34.96-78.08-78.08V143.47c0-43.12,34.96-78.08,78.08-78.08h1188.06
 					c43.12,0,78.08,34.96,78.08,78.08v561.14C1523.08,747.73,1488.12,782.69,1444.99,782.69z" />
 			<line class="line" x1="544.57" y1="781.98" x2="1138.03" y2="781.98" />
@@ -247,10 +228,10 @@
 	<div id="choice">
 		<ul>
 			<li>
-				<button id="redirection">Play</button>
+				<button id="redirection" onclick=redirect()>Play</button>
 			</li>
 			<li>
-				<button id="more">Find out more</button>
+				<button id="more" onclick=getMore()>Find out more</button>
 			</li>
 		</ul>
 	</div>
@@ -258,11 +239,11 @@
 	<div id="player">
 		<div id="start/stop">
 			<audio src="audio/sound.mp3" playing="false" id="audio"></audio>
-			<img src="img/play.png" id="play">
+			<img src="img/play.png" id="play" onclick=clickedPlay()>
 		</div>
 	</div>
 	<div id="info" class="invisible">
-		<span id="close">X</span><br>
+		<span id="close" onclick=closeInfo()>X</span><br>
 		<span>
 			<div id='title'>What is Let's draw ?</div>
 			Two interactive huge screens full of light and colors, with music coming out of it, placed in two train

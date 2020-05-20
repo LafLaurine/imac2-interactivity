@@ -2,7 +2,7 @@ let positions;
 
 
 function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
@@ -20,24 +20,24 @@ function drawWebcam() {
     const rvb = hexToRgb(color);
 
     // Begin loop to walk through every pixel
-    for (var x = 0; x < video.width; x++) {
-        for (var y = 0; y < video.height; y++) {
+    for (let x = 0; x < video.width; x++) {
+        for (let y = 0; y < video.height; y++) {
 
             // Step 1, what is the location into the array
-            var loc = (x + y * video.width) * 4;
+            let loc = (x + y * video.width) * 4;
 
             // Step 2, what is the previous color
-            var r1 = prevFrame.pixels[loc];
-            var g1 = prevFrame.pixels[loc + 1];
-            var b1 = prevFrame.pixels[loc + 2];
+            let r1 = prevFrame.pixels[loc];
+            let g1 = prevFrame.pixels[loc + 1];
+            let b1 = prevFrame.pixels[loc + 2];
 
             // Step 3, what is the current color
-            var r2 = video.pixels[loc];
-            var g2 = video.pixels[loc + 1];
-            var b2 = video.pixels[loc + 2];
+            let r2 = video.pixels[loc];
+            let g2 = video.pixels[loc + 1];
+            let b2 = video.pixels[loc + 2];
 
             // Step 4, compare colors (previous vs. current)
-            var diff = dist(r1, g1, b1, r2, g2, b2);
+            const diff = dist(r1, g1, b1, r2, g2, b2);
             // Step 5, How different are the colors?
             // If the color at that pixel has changed, then there is motion at that pixel.
             if (diff > threshold) {

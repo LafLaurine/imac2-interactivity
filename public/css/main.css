@@ -1,107 +1,356 @@
-input.call-picker {
-    border: 1px solid #AAA;
-    color: #666;
-    text-transform: uppercase;
-    float: left;
-    outline: none;
-    padding: 10px;
-    text-transform: uppercase;
-    width: 85px;
+/*fonts*/
+@font-face {
+    font-family: 'Futura LT Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Regular'), url('../fonts/futura/FuturaLT.woff') format('woff');
 }
 
-.color-picker {
-    width: 130px;
-    background: #F3F3F3;
-    height: 81px;
-    padding: 5px;
-    border: 5px solid #fff;
-    box-shadow: 0px 0px 3px 1px #DDD;
-    position: absolute;
-    top: 61px;
-    left: 2px;
+@font-face {
+    font-family: 'Futura LT Book';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Book'), url('../fonts/futura/FuturaLT-Book.woff') format('woff');
 }
 
-.color-holder {
-    background: #ff0000;
-    cursor: pointer;
-    border: 1px solid #AAA;
-    width: 40px;
-    height: 36px;
-    float: left;
-    margin-left: 5px;
+@font-face {
+    font-family: 'Futura LT Oblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Oblique'), url('../fonts/futura/FuturaLT-Oblique.woff') format('woff');
 }
 
-input.stroke_width_picker {
-    border: 1px solid #AAA;
-    color: #666;
-    text-transform: uppercase;
-    float: left;
-    outline: none;
-    padding: 10px;
-    text-transform: uppercase;
-    width: 85px;
+@font-face {
+    font-family: 'Futura LT BookOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT BookOblique'), url('../fonts/futura/FuturaLT-BookOblique.woff') format('woff');
 }
 
-p {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    color: #DDD;
+@font-face {
+    font-family: 'Futura LT Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Light'), url('../fonts/futura/FuturaLT-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedLight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedLight'), url('../fonts/futura/FuturaLT-CondensedLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT LightOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT LightOblique'), url('../fonts/futura/FuturaLT-LightOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedLightObl';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedLightObl'), url('../fonts/futura/FuturaLT-CondensedLightObl.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT Condensed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Condensed'), url('../fonts/futura/FuturaLT-Condensed.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedOblique'), url('../fonts/futura/FuturaLT-CondensedOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT ExtraBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT ExtraBold'), url('../fonts/futura/FuturaLT-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Bold'), url('../fonts/futura/FuturaLT-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedBold'), url('../fonts/futura/FuturaLT-CondensedBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedExtraBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedExtraBold'), url('../fonts/futura/FuturaLT-CondensedExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT ExtraBoldOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT ExtraBoldOblique'), url('../fonts/futura/FuturaLT-ExtraBoldOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT BoldOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT BoldOblique'), url('../fonts/futura/FuturaLT-BoldOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondExtraBoldObl';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondExtraBoldObl'), url('../fonts/futura/FuturaLT-CondExtraBoldObl.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedBoldOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedBoldOblique'), url('../fonts/futura/FuturaLT-CondensedBoldOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT Heavy';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Heavy'), url('../fonts/futura/FuturaLT-Heavy.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT HeavyOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT HeavyOblique'), url('../fonts/futura/FuturaLT-HeavyOblique.woff') format('woff');
+}
+
+
+html { 
+    overflow-y: hidden; 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: repeat url("../img/fond.svg");
 }
 
 button {
-    margin-left: 1rem;
+    width: 150%;
+    margin-top: 20%;
+    font-size: 25px;
+    border-radius: 10px;
+    font-family: Futura LT Regular;
+    color: #047e9f;
 }
 
-html,
-body {
-    height: 100%;
-    background-color: #373d55;
+button:hover {
+    background-color: #f18736;
+    color: white;
+    border-color: #f18736;
 }
 
-.users {
-    display: inline-block;
-    background-color: lightblue;
-    width: 25%;
-    height: 505px;
-    margin: 10px 10px;
-    padding: 10px;
-    vertical-align: top;
+#screen {
+    position: absolute;
+    margin-top: -6%;
+    margin-left: 9%;
+    width: 80%;
 }
 
+.logo {
+    position: absolute;
+    width: 24%;
+    margin-left: 39%;
+    margin-top: -9%;
+    transform: rotate(7deg);
+}
 
-.grey-out {
-    position: fixed;
-    top: 0px;
-    left: 0px;
+#choice {
+    margin-left: 37%;
+    position: absolute;
+    white-space: nowrap;
+    text-align: center;
+    margin-top: 6%;
+}
+
+#play {
+    width: 3%;
+    margin-left: 2%;
+    margin-bottom: -43vh;
+}
+
+#info {
+    position: absolute;
+    border-radius: 10px;
+    border-color: #f18736;
+    border-style: solid;
+    border-width: 2px;
+    background-color: white;
+    width: 40%;
+    text-align: justify;
+    margin: auto;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 4;
+    font-family: 'Futura LT Book';
+    color: #808080;
+
+}
+
+#close {
+    margin-left: 97%;
+    cursor: pointer;
+    color: #f18736;
+}
+
+#close:hover {
+    font-size: 18px;
+    color: #047e9f;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Futura LT Condensed';
+    color: #047e9f;
+    font-size: 20px;
+}
+
+#cover {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #4A4A4A;
-    opacity: .8;
-    display: block;
-    z-index: 900;
-}
-
-.user {
-    position: relative;
     background-color: white;
-    max-height: 300px;
-    max-width: 300px;
-    text-align: center;
-    padding: 25px 5px;
-    top: 20%;
-    margin: auto;
-    border-radius: 6px;
+    z-index: 2;
+    opacity: 0.6;
 }
 
-#username {
-    width: 90%;
-    font-size: 30px;
-    padding: 5px;
-    margin: 10px;
+.invisible {
+    display: none;
 }
 
-#submitname {
-    width: 70px;
-    height: 30px;
-    background-color: #9BCD9B;
+.visible {
+    display: block;
+}
+
+.hour,
+.minute,
+.second {
+    transform-origin: 722.96px 151.54px;
+}
+
+/*svg*/
+.st0 {
+    fill: #575756;
+}
+
+.st1 {
+    fill: #616160;
+}
+
+.st2 {
+    fill: #F68200;
+}
+
+.st3 {
+    font-family: 'Futura LT Book';
+}
+
+.st4 {
+    font-size: 32.1601px;
+}
+
+.st5 {
+    fill: #FFFFFF;
+}
+
+.st6 {
+    stroke: #000000;
+    stroke-miterlimit: 10;
+}
+
+.st7 {
+    fill: none;
+    stroke: #000000;
+    stroke-miterlimit: 10;
+}
+
+.st8 {
+    font-family: 'Futura LT Book';
+}
+
+.st9 {
+    font-size: 21.184px;
+}
+
+.st10 {
+    fill: none;
+}
+
+.st11 {
+    fill: #2D256D;
+}
+
+.st12 {
+    fill: #FFFFFF;
+    stroke: #000000;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+}
+
+.st13 {
+    font-size: 22px;
+}
+
+.st14 {
+    font-family: 'Futura LT LightOblique';
+}
+
+.st15 {
+    font-size: 19px;
+}
+
+.st16 {
+    fill: #111110;
+}
+
+.second,
+.hour,
+.minute {
+    fill: #000000;
+}
+
+.screen {
+    stroke: #3C3C3B;
+    stroke-width: 27;
+    stroke-miterlimit: 10;
+}
+
+.line {
+    fill: none;
+    stroke: #F18736;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.circles {
+    fill: #F18736;
 }
