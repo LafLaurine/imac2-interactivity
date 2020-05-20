@@ -59,7 +59,6 @@ function setUpSketch() {
     socket.on('userlist', userlist);
     socket.on('guesser', guesser);
     socket.on('guessword', guessword);
-    socket.on('draw', draw);
     socket.on('draw word', drawWord);
     socket.on('new drawer', newDrawer);
     socket.on('correct answer', correctAnswer);
@@ -86,17 +85,9 @@ function sendMouse(x, y, pX, pY) {
         color: color,
         strokeWidth: strokeWidth,
     }
-    console.log(color)
     socket.emit('mouse', data, function (response) {
         console.log(response);
     });
-}
-
-//clear Canva
-function keyPressed() {
-    if (keyCode === ESCAPE) {
-        clear();
-    }
 }
 
 let guesser = function () {
@@ -111,7 +102,10 @@ function submitGuess() {
     if (guess == '') {
         return false
     };
-
+    const element = document.createElement('p');
+    let textNode = document.createTextNode(user + "'s guess: " + guess);
+    element.appendChild(textNode);
+    document.querySelector('.users').appendChild(element);    
     console.log(user + "'s guess: " + guess);
     socket.emit('guessword', {
         username: user,
@@ -122,8 +116,8 @@ function submitGuess() {
 }
 
 let guessword = function (data) {
-    document.getElementById('guesses').innerHTML = data.username + "'s guess: " + data.guessword;
-    if (data.guessword == document.getElementsByClassName('word')[0].innerHTML) {
+    document.getElementById('guesses').innerHTML += data.username + "'s guess: " + data.guessword;
+    if (data.guessword === document.getElementsByClassName('word')[0].innerHTML) {
         console.log('guesser: ' + data.username + ' draw-word: ' + document.getElementsByClassName('word')[0].innerHTML);
         socket.emit('correct answer', {
             username: data.username,
@@ -134,6 +128,7 @@ let guessword = function (data) {
             to: data.username
         });
     } else {
+        document.getElementById('guesses').innerHTML += data.username + " gave a wrong answer";
         console.log("wrong answer");
     }
 };
@@ -144,13 +139,13 @@ let drawWord = function (word) {
 };
 
 let correctAnswer = function (data) {
-    document.getElementById('guesses').innerHTML = '<p>' + data.username + ' guessed correctly!' + '</p>';
+    document.getElementById('guesses').innerHTML += '<p>' + data.username + ' guessed correctly!' + '</p>';
 };
 
 let reset = function (name) {
     document.getElementById('guesses').innerHTML = "";
     console.log('New drawer: ' + name);
-    document.getElementById('guesses').innerHTML = '<p>' + name + ' is the new drawer' + '</p>';
+    document.getElementById('guesses').innerHTML += '<p>' + name + ' is the new drawer' + '</p>';
 };
 
 let newDrawer = function () {

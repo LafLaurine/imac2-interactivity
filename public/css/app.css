@@ -42,14 +42,12 @@ input.stroke_width_picker {
     width: 85px;
 }
 
-p {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    color: #DDD;
-}
-
 button {
     margin-left: 1rem;
+}
+
+li {
+    list-style: none;
 }
 
 html,

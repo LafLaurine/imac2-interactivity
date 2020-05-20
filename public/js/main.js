@@ -58,6 +58,7 @@ function globalSetup() {
 }
 
 function showPage(index) {
+    globalSetup();
     pages.forEach(el => el.state = false);
     pages[index].state = true;
 }

@@ -1,6 +1,5 @@
 const http = require('http')
 const app = require('./app')
-let connectCounter = 0;
 
 let users = [];
 let wordcount;
@@ -78,12 +77,11 @@ io.sockets.on('connection', (socket) => {
         socket.username = name;
         // user automatically joins a room under their own name
         socket.join(name);
-        connectCounter++;
-        console.log(socket.username + ' has joined ' + "number of player : " + connectCounter);
+        console.log(socket.username + ' has joined ' + "number of player : " + users.length);
         // save the name of the user to an array called users
         users.push(socket.username);
         // if the user is first to join OR 'drawer' room has no connections
-        if (typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
+        if (users.length == 1 || typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
             // place user into 'drawer' room
             socket.join('drawer');
             // server submits the 'drawer' event to this user
@@ -165,17 +163,14 @@ io.sockets.on('connection', (socket) => {
         console.log(data.username + ' guessed correctly with ' + data.guessword);
     });
 
-
     socket.on('disconnect', () => {
         for (var i = 0; i < users.length; i++) {
-
             // remove user from users list
             if (users[i] == socket.username) {
                 users.splice(i, 1);
             };
         };
-        connectCounter--;
-        console.log(socket.username + ' has disconnected, number of player : ' + connectCounter);
+        console.log(socket.username + ' has disconnected + number of player : ' + users.length);
         // submit updated users list to all clients
         io.emit('userlist', users);
     });
