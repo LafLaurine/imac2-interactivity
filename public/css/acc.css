@@ -139,14 +139,9 @@
     src: local('Futura LT HeavyOblique'), url('../fonts/futura/FuturaLT-HeavyOblique.woff') format('woff');
 }
 
-<<<<<<< HEAD
+
 html { 
     overflow-y: hidden; 
-=======
-html {
-    overflow-y: hidden;
-    background: repeat url("../img/fond.svg");
->>>>>>> eb580d479bf05c0d3c730225664b6804103a957e
     height: 100%;
     margin: 0;
     padding: 0;
