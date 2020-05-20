@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interactivity - Let's draw</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/camera.js"></script>
+    <script type="text/javascript" src="js/sketch.js"></script>
+
+</head>
+
+<body>
+    <button class="btn" onclick="showPage(0)">Pictionary</button>
+    <button class="btn" onclick="showPage(1)">Camera</button>
+    <div class="grey-out">
+        <form class="user"><label for="username">Enter a username </label><input id="username" type="text"
+                placeholder="Username" maxlength="14" autofocus>
+            <button type="submit" id="submitname" onclick="submitUserName()">Submit</button>
+        </form>
+    </div>
+
+    <p>Choose color (# hex)</p>
+    <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
+    <div id="color-holder" class="color-holder call-picker"></div>
+    <button id="color-btn">Change color</button>
+    <br />
+    <p>Choose stroke width</p>
+    <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker" class="stroke_width_picker" />
+    <button id="stroke-btn">Change stroke width</button>
+
+    <div class="row">
+        <div class="users">
+        </div>
+        <div id="guesses"></div>
+
+    </div>
+    <div id="top-message">
+        <div class="draw">
+            <p>The secret word is: <span class="word"></span></p>
+        </div>
+        <form id="guess">
+            Guess the word! <input name="guess" class="guess-input" type="text">
+        </form>
+        <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
+    </div>
+</body>
+
+</html>
