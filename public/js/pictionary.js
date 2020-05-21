@@ -6,7 +6,7 @@ let users = [];
 
 function submitUserName() {
     event.preventDefault();
-    user = document.getElementById("username").value;
+    user = document.querySelector("#username").value;
 
     if (user == '') {
         return false
@@ -23,9 +23,9 @@ function submitUserName() {
         console.log("Join : " + response);
     });
 
-    document.getElementsByClassName('grey-out')[0].style.display = "none";
-    document.getElementsByClassName('user')[0].style.display = "none";
-    document.getElementsByClassName('guess-input')[0].focus();
+    document.querySelector('.grey-out').style.display = "none";
+    document.querySelector('.user').style.display = "none";
+    document.querySelector('.guess-input').focus();
 }
 
 let userlist = function (names) {
@@ -34,7 +34,7 @@ let userlist = function (names) {
     for (let i = 0; i < names.length; i++) {
         html += '<li>' + names[i] + '</li>';
     };
-    document.getElementsByClassName('users')[0].innerHTML = html;
+    document.querySelector('.users').innerHTML = html;
 };
 
 
@@ -92,12 +92,12 @@ function sendMouse(x, y, pX, pY) {
 
 let guesser = function () {
     console.log('You are a guesser');
-    document.getElementsByClassName('guess-input')[0].focus();
+    document.querySelector('.guess-input').focus();
 };
 
 function submitGuess() {
     event.preventDefault();
-    let guess = document.getElementsByClassName('guess-input')[0].value;
+    let guess = document.querySelector('.guess-input').value;
 
     if (guess == '') {
         return false
@@ -105,20 +105,20 @@ function submitGuess() {
     const element = document.createElement('p');
     let textNode = document.createTextNode(user + "'s guess: " + guess);
     element.appendChild(textNode);
-    document.querySelector('.users').appendChild(element);    
+    document.querySelector('.users').appendChild(element);
     console.log(user + "'s guess: " + guess);
     socket.emit('guessword', {
         username: user,
         guessword: guess
     });
 
-    document.getElementsByClassName('guess-input')[0].value = "";
+    document.querySelector('.guess-input').value = "";
 }
 
 let guessword = function (data) {
-    document.getElementById('guesses').innerHTML += data.username + "'s guess: " + data.guessword;
-    if (data.guessword === document.getElementsByClassName('word')[0].innerHTML) {
-        console.log('guesser: ' + data.username + ' draw-word: ' + document.getElementsByClassName('word')[0].innerHTML);
+    document.querySelector('#guesses').innerHTML += data.username + "'s guess: " + data.guessword;
+    if (data.guessword === document.querySelector('.word').innerHTML) {
+        console.log('guesser: ' + data.username + ' draw-word: ' + document.querySelector('.word').innerHTML);
         socket.emit('correct answer', {
             username: data.username,
             guessword: data.guessword
@@ -128,28 +128,28 @@ let guessword = function (data) {
             to: data.username
         });
     } else {
-        document.getElementById('guesses').innerHTML += data.username + " gave a wrong answer";
+        document.querySelector('#guesses').innerHTML += data.username + " gave a wrong answer";
         console.log("wrong answer");
     }
 };
 
 let drawWord = function (word) {
-    document.getElementsByClassName('word')[0].innerHTML = word;
+    document.querySelector('.word').innerHTML = word;
     console.log('Your word to draw is: ' + word);
 };
 
 let correctAnswer = function (data) {
-    document.getElementById('guesses').innerHTML += '<p>' + data.username + ' guessed correctly!' + '</p>';
+    document.querySelector('#guesses').innerHTML += '<p>' + data.username + ' guessed correctly!' + '</p>';
 };
 
 let reset = function (name) {
-    document.getElementById('guesses').innerHTML = "";
+    document.querySelector('#guesses').innerHTML = "";
     console.log('New drawer: ' + name);
-    document.getElementById('guesses').innerHTML += '<p>' + name + ' is the new drawer' + '</p>';
+    document.querySelector('#guesses').innerHTML += '<p>' + name + ' is the new drawer' + '</p>';
 };
 
 let newDrawer = function () {
     socket.emit('new drawer', user);
     clear();
-    document.getElementById('guesses').innerHTML = "";
+    document.querySelector('#guesses').innerHTML = "";
 };
