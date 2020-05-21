@@ -29,7 +29,7 @@ function centerCanvas() {
 }
 
 function globalSetup() {
-    cv = createCanvas(windowWidth / 2, windowHeight / 2);
+    cv = createCanvas(windowWidth/ 1.5, windowHeight / 1.5);
     pixelDensity(1);
     background(255);
     video = createCapture(VIDEO);

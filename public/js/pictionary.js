@@ -4,6 +4,11 @@ let strokeWidth = 4
 let user;
 let users = [];
 
+function windowResized() {
+    resizeCanvas(windowWidth / 1.5, windowHeight / 1.5);
+    background(255);
+}
+
 function submitUserName() {
     event.preventDefault();
     user = document.querySelector("#username").value;

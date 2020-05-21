@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Interactivity - Let's draw</title>
-    <link rel="icon" type="image/png" href="">
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <title>Let's draw</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link rel="stylesheet" type="text/css" href="./css/app.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
@@ -26,29 +25,36 @@
         </form>
     </div>
 
-    <p>Choose color (# hex)</p>
-    <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
-    <div id="color-holder" class="color-holder call-picker"></div>
-    <button id="color-btn">Change color</button>
-    <br />
-    <p>Choose stroke width</p>
-    <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker" class="stroke_width_picker" />
-    <button id="stroke-btn">Change stroke width</button>
-
-    <div class="row">
-        <div class="users">
+    <div id="game">
+        <div id="color-picker">
+            <a href="./colorPicker.html"><button id="help" onclick=showColorPicker()>Need help to choose color ?</button></a>
+            <p id="choose-color">Choose color (# hex)</p>
+            <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
+            <div id="color-holder" class="color-holder call-picker"></div>
+            <button id="color-btn">Change color</button>
         </div>
-        <div id="guesses"></div>
-
-    </div>
-    <div id="top-message">
-        <div class="draw">
-            <p>The secret word is: <span class="word"></span></p>
+    
+        <div id="stroke-picker">
+            <p>Choose stroke width</p>
+            <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker" class="stroke_width_picker" />
+            <button id="stroke-btn">Change stroke width</button>
         </div>
-        <form id="guess">
-            Guess the word! <input name="guess" class="guess-input" type="text">
-        </form>
-        <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
+
+        <div class="row">
+            <div class="users">
+            </div>
+            <div id="guesses"></div>
+
+        </div>
+        <div id="top-message">
+            <div class="draw">
+                <p>The secret word is: <span class="word"></span></p>
+            </div>
+            <form id="guess">
+                Guess the word! <input name="guess" class="guess-input" type="text">
+            </form>
+            <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
+        </div>
     </div>
 </body>
 

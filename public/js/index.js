@@ -47,7 +47,6 @@ function getMore() {
 }
 
 function closeInfo() {
-  console.log("closing");
   const info = document.querySelector("#info");
   info.classList.remove("visible");
   info.classList.add("invisible");

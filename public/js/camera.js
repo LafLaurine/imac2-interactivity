@@ -10,6 +10,9 @@ function hexToRgb(hex) {
     } : null;
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth / 1.5, windowHeight / 1.5);
+}
 
 function drawWebcam() {
     image(prevFrame, 0, 0);
