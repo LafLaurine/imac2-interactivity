@@ -4,7 +4,12 @@ let cv;
 let prevFrame;
 // How different must a pixel be to be a "motion" pixel
 let threshold = 80;
-let color = '#000000'
+let color = '#000000';
+let amp;
+
+let song;
+let button;
+let volhistory = [];
 
 let pages = [{
         state: true,
@@ -22,6 +27,18 @@ let pages = [{
     }
 ]
 
+function toggleSong() {
+    if (song.isPlaying()) {
+      song.pause();
+    } else {
+      song.play();
+    }
+}
+  
+function preload() {
+    song = loadSound('/assets/audio/Purple Planet Music - The Big Sky.mp3');
+}
+  
 function centerCanvas() {
     const x = (windowWidth - width) / 2
     const y = (windowHeight - height) / 2
@@ -36,6 +53,12 @@ function globalSetup() {
     video.size(width, height);
     video.hide();
     centerCanvas();
+
+    button = createButton('toggle');
+    button.mousePressed(toggleSong);
+    song.play();
+    amp = new p5.Amplitude();
+  
     // Create an empty image the same size as the video
     prevFrame = createImage(video.width, video.height);
 
@@ -61,6 +84,29 @@ function showPage(index) {
     globalSetup();
     pages.forEach(el => el.state = false);
     pages[index].state = true;
+}
+
+function drawSound() {
+    let vol = amp.getLevel();
+    volhistory.push(vol);
+    stroke(255);
+    noFill();
+    push();
+    let currentY = map(vol, 0, 1, height, 0);
+    translate(0, height / 2 - currentY);
+    beginShape();
+    for (let i = 0; i < volhistory.length; i++) {
+        let y = map(volhistory[i], 0, 1, height, 0);
+        vertex(i, y);
+    }
+    endShape();
+    pop();
+    if (volhistory.length > width - 50) {
+        volhistory.splice(0, 1);
+    }
+
+    stroke(255, 0, 0);
+    line(volhistory.length, 0, volhistory.length, height);
 }
 
 function draw() {

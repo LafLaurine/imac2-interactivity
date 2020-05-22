@@ -26,7 +26,7 @@ function clickedPlay() {
   if(play.getAttribute("playing") === 'false'){
     console.log(audio);
     audio.play();
-    play.setAttribute('src','img/stop.png');
+    play.setAttribute('src','assets/img/stop.png');
     play.setAttribute('playing','true');
   }
   else {
