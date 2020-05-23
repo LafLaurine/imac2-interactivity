@@ -61,7 +61,9 @@ function globalSetup() {
 
     button = createButton('toggle');
     button.mousePressed(toggleSong);
-    random(sounds).play();
+    let sound = random(sounds)
+    sound.play();
+    sound.amp(0.3);
     // Create an empty image the same size as the video
     prevFrame = createImage(video.width, video.height);
 
