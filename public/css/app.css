@@ -1,51 +1,149 @@
-input.call-picker {
-    border: 1px solid #AAA;
-    color: #666;
-    text-transform: uppercase;
-    float: left;
-    outline: none;
-    padding: 10px;
-    text-transform: uppercase;
-    width: 85px;
+/*fonts*/
+@font-face {
+    font-family: 'Futura LT Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Regular'), url('../assets/fonts/futura/FuturaLT.woff') format('woff');
 }
 
-.color-picker {
-    width: 130px;
-    background: #F3F3F3;
-    height: 81px;
-    padding: 5px;
-    border: 5px solid #fff;
-    box-shadow: 0px 0px 3px 1px #DDD;
-    position: absolute;
-    top: 61px;
-    left: 2px;
+@font-face {
+    font-family: 'Futura LT Book';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Book'), url('../assets/fonts/futura/FuturaLT-Book.woff') format('woff');
 }
 
-.color-holder {
-    background: #ff0000;
-    cursor: pointer;
-    border: 1px solid #AAA;
-    width: 40px;
-    height: 36px;
-    float: left;
-    margin-left: 5px;
+@font-face {
+    font-family: 'Futura LT Oblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Oblique'), url('../assets/fonts/futura/FuturaLT-Oblique.woff') format('woff');
 }
 
-input.stroke_width_picker {
-    border: 1px solid #AAA;
-    color: #666;
-    text-transform: uppercase;
-    float: left;
-    outline: none;
-    padding: 10px;
-    text-transform: uppercase;
-    width: 85px;
+@font-face {
+    font-family: 'Futura LT BookOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT BookOblique'), url('../assets/fonts/futura/FuturaLT-BookOblique.woff') format('woff');
 }
 
-button {
-    margin-left: 1rem;
+@font-face {
+    font-family: 'Futura LT Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Light'), url('../assets/fonts/futura/FuturaLT-Light.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'Futura LT CondensedLight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedLight'), url('../assets/fonts/futura/FuturaLT-CondensedLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT LightOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT LightOblique'), url('../assets/fonts/futura/FuturaLT-LightOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedLightObl';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedLightObl'), url('../assets/fonts/futura/FuturaLT-CondensedLightObl.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT Condensed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Condensed'), url('../assets/fonts/futura/FuturaLT-Condensed.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedOblique'), url('../assets/fonts/futura/FuturaLT-CondensedOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT ExtraBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT ExtraBold'), url('../assets/fonts/futura/FuturaLT-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Bold'), url('../assets/fonts/futura/FuturaLT-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedBold'), url('../assets/fonts/futura/FuturaLT-CondensedBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedExtraBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedExtraBold'), url('../assets/fonts/futura/FuturaLT-CondensedExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT ExtraBoldOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT ExtraBoldOblique'), url('../assets/fonts/futura/FuturaLT-ExtraBoldOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT BoldOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT BoldOblique'), url('../assets/fonts/futura/FuturaLT-BoldOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondExtraBoldObl';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondExtraBoldObl'), url('../assets/fonts/futura/FuturaLT-CondExtraBoldObl.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT CondensedBoldOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT CondensedBoldOblique'), url('../assets/fonts/futura/FuturaLT-CondensedBoldOblique.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT Heavy';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT Heavy'), url('../assets/fonts/futura/FuturaLT-Heavy.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Futura LT HeavyOblique';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura LT HeavyOblique'), url('../assets/fonts/futura/FuturaLT-HeavyOblique.woff') format('woff');
+}
+@font-face {
+    font-family: '3D Isometric';
+    font-style: normal;
+    font-weight: normal;
+    src: local('3D Isometric'), url('../assets/fonts/3d_isometric/3D Isometric.otf') format('otf');
+}
 li {
     list-style: none;
 }
@@ -53,20 +151,30 @@ li {
 html,
 body {
     height: 100%;
-    background-color: #373d55;
+    position: fixed;
+    font-family: 'Futura LT Regular';
+
 }
-
-.users {
-    display: inline-block;
-    background-color: lightblue;
-    width: 25%;
-    height: 505px;
-    margin: 10px 10px;
-    padding: 10px;
-    vertical-align: top;
+button{
+    font-family: 'Futura LT Light';
+    border-radius: 16px;
+    color: #fe882e;
 }
-
-
+button:hover {
+    color: white;
+    background-color:#fe882e;
+}
+object{
+    height: 370px;
+    width: 100%;
+}
+p#choose-color{
+    font-family: 'Futura LT LightOblique';
+}
+.app{
+    background-color: black;
+    color: white;
+}
 .grey-out {
     position: fixed;
     top: 0px;
@@ -82,24 +190,186 @@ body {
 .user {
     position: relative;
     background-color: white;
-    max-height: 300px;
-    max-width: 300px;
     text-align: center;
-    padding: 25px 5px;
-    top: 20%;
+    width: 20%;
+    padding: 10px;
+    top: 40%;
     margin: auto;
     border-radius: 6px;
+    box-shadow: 10px 3px 10px black;
+    z-index: 901;
 }
 
 #username {
     width: 90%;
-    font-size: 30px;
+    font-size: 20px;
     padding: 5px;
-    margin: 10px;
+    opacity: 1;
+    font-family: 'Futura LT Regular';
 }
 
 #submitname {
     width: 70px;
-    height: 30px;
-    background-color: #9BCD9B;
+    margin-top: 10px;
+    background-color:#006580;
+    color:white;
+}
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.canvas{
+    border-radius: 16px;
+    margin-left: 30%; 
+    margin-top: -8%;
+    width: 800px;
+    border-style: solid;
+    border-color: #fe882e;
+}
+#colorHelp{
+    width: 66%;
+    position: absolute;
+    top: 366px;
+    right: -22%;
+    z-index: 10;
+}
+#closeColorPicker{
+    cursor: pointer;
+    margin-top: 4%;
+    margin-left: 282px;
+    position: absolute;
+}
+#choice{
+    width: 60%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 16px;
+    margin-top: 2%;
+    margin-left: 4%;
+}
+.color-holder {
+    background: #ff0000;
+    cursor: pointer;
+    border: 1px solid #AAA;
+    width: 40px;
+    height: 36px;
+    float: left;
+    position: absolute;
+    margin-left: 1px;
+    margin-top: -32px;
+    border-radius: 10px;
+}
+
+.btn{
+    width: 62%;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 16px;
+    border-color:#006580;
+    font-family: '3D Isometric';
+    color: black;
+    background-color: #006580;
+
+}
+.btn:hover{
+    border-color: #fe882e;
+    color: black;
+}
+.menu{
+    width: 105%;
+    margin-left: 4%;
+
+}
+.users{
+    width: 60%;
+    padding: 10px;
+    border-radius: 16px;
+    margin-top: 2%;
+    height: 148px;
+    margin-left: 4%;
+    overflow: auto;
+}
+.toggleButton{
+    position: absolute;
+    right: -142%;
+    bottom: 15%;
+    width: 20%;
+}
+.chatbox-header,.title{
+    font-family: '3D Isometric';
+    text-align: center;
+    color: #fe882e;
+}
+.word{
+    font-family: 'Futura LT LightOblique';
+}
+.word{
+    font-family: 'Futura LT LightOblique';
+}
+#logo{
+    width: 75.5%;
+    margin-left: 4%;
+    margin-top: 0%;
+}
+#top-message{
+    position: absolute;
+    border-radius: 16px;
+    padding: 10px;
+    margin-top: 30%;
+    width: 70%;
+    margin-left: 72%;
+}
+#guesses{
+    width: 60%;
+    padding: 10px;
+    border-radius: 16px;
+    margin-top: 2%;
+    margin-left: 4%;
+}
+#guesses, #top-message,#choice,.users{
+    border-color:#006580;
+    border-style: solid; 
+}
+#color-btn, #stroke-btn, #submitguesss{
+    border-radius: 0 16px 16px 0;
+    font-size: 14px;
+    border-color: white;
+    color: white;
+    background-color: rgba(0, 0, 0, 0)
+}
+#color-btn:hover, #stroke-btn:hover, #submitguesss:hover{
+    border-radius: 0 16px 16px 0;
+    font-size: 14px;
+    border-color: #fe882e;
+    color: #fe882e;
+    background-color: rgba(0, 0, 0, 0)
+}
+#pickcolor, .guess-input,#stroke-width-picker{
+    border-radius: 16px 0 0 16px;
+    font-size: 12px;
+    width: 35%;
+    border-width: 3px;
+    border-color: white;
+    box-shadow: 0;
+    padding-left: 2%;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+#help{
+    width: 66%;
+    margin-top: 6px;
+}
+#scrollable::-webkit-scrollbar-thumb {
+  background-color: #fe882e;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;  
+}
+
+#scrollable::-webkit-scrollbar {
+  width: 12px;
 }
