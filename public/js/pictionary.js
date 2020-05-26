@@ -44,6 +44,9 @@ let userlist = function (names) {
 
 
 function setUpSketch() {
+    song = random(sounds);
+    song.play();
+    song.amp(0.3);
     // Start a socket connection to the server
     socket = io.connect('http://localhost:3000')
     // We make a named event called 'mouse' and write an

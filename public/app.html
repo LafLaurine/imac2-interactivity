@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head class ="app">
+<head class="app">
     <meta charset="UTF-8">
     <title>Let's draw</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
@@ -15,14 +15,14 @@
     <script type="text/javascript" src="js/pictionary.js"></script>
 </head>
 
-<body class ="app">
+<body class="app">
     <img src="assets/img/LOGO2_V2.png" id="logo">
     <div class="menu">
         <button class="btn" onclick="showPage(0)">Pictionary</button><br>
         <button class="btn" onclick="showPage(1)">Camera</button>
     </div>
     <div class="grey-out">
-         <form class="user">
+        <form class="user">
             <label for="username">Enter a username </label>
             <input id="username" type="text" placeholder="Username" maxlength="14" autofocus>
             <button type="submit" id="submitname" onclick="submitUserName()">Submit</button>
@@ -31,7 +31,7 @@
 
     <div id="game">
         <div id="choice">
-             <div id="color-picker">
+            <div id="color-picker">
                 <p id="choose-color"><span class="title">Choose color </span>(# hex)</p>
                 <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
                 <div id="color-holder" class="color-holder call-picker"></div>
@@ -61,10 +61,12 @@
             <div id="guesses"></div>
 
         </div>
+
         <div id="colorHelp" class="invisible">
             <span id="closeColorPicker" onclick="closeColorPicker()"> X</span>
-            <object data="./colorPicker.html" type="text/html"  width="50%" height="350px"/>
+            <object data="./colorPicker.html" type="text/html" width="50%" height="350px" />
         </div>
+
     </div>
 </body>
 

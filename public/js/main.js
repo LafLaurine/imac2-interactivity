@@ -14,30 +14,20 @@ let sounds = [];
 let pages = [{
         state: true,
         setup: function () {
-            setUpSketch()
+            setUpSketch();
         },
         draw: function () {}
     },
     {
         state: false,
-        setup: function () {},
+        setup: function () {
+            setUpCamera();
+        },
         draw: function () {
             drawWebcam();
         }
     }
 ]
-
-function toggleSong() {
-    for (let i = 0; i < sounds.length; i++) {
-
-    }
-    if (sounds[i].isPlaying()) {
-        sounds[i].pause();
-    } else {
-        sounds[i].play();
-    }
-}
-
 
 function preload() {
     sounds.push(loadSound('/assets/audio/music.mp3'));
@@ -59,13 +49,6 @@ function globalSetup() {
     video.size(width, height);
     video.hide();
     centerCanvas();
-
-    button = createButton('Toggle');
-    button.addClass('toggleButton');
-    button.mousePressed(toggleSong);
-    let sound = random(sounds)
-    sound.play();
-    sound.amp(0.3);
     // Create an empty image the same size as the video
     prevFrame = createImage(video.width, video.height);
 
@@ -116,13 +99,13 @@ function touchStarted() {
 }
 
 function showColorPicker() {
-  const colorPicker = document.querySelector("#colorHelp");
-  colorPicker.classList.remove("invisible");
-  colorPicker.classList.add("visible");
+    const colorPicker = document.querySelector("#colorHelp");
+    colorPicker.classList.remove("invisible");
+    colorPicker.classList.add("visible");
 }
 
 function closeColorPicker() {
-  const colorPicker = document.querySelector("#colorHelp");
-  colorPicker.classList.remove("visible");
-  colorPicker.classList.add("invisible");
+    const colorPicker = document.querySelector("#colorHelp");
+    colorPicker.classList.remove("visible");
+    colorPicker.classList.add("invisible");
 }

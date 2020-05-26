@@ -14,6 +14,12 @@ function windowResized() {
     resizeCanvas(windowWidth / 1.5, windowHeight / 1.5);
 }
 
+function setUpCamera() {
+    song = random(sounds);
+    song.play();
+    song.amp(0.3);
+}
+
 function drawWebcam() {
     image(prevFrame, 0, 0);
 
