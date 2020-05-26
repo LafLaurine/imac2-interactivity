@@ -342,9 +342,9 @@ p#choose-color {
     position: absolute;
     border-radius: 16px;
     padding: 10px;
-    margin-top: 2%;
-    text-align: center;
     margin-left: 4%;
+    text-align: center;
+    margin-top: 2%;
 }
 
 #guesses {
