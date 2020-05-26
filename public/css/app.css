@@ -138,12 +138,14 @@
     font-weight: normal;
     src: local('Futura LT HeavyOblique'), url('../assets/fonts/futura/FuturaLT-HeavyOblique.woff') format('woff');
 }
+
 @font-face {
     font-family: '3D Isometric';
     font-style: normal;
     font-weight: normal;
     src: local('3D Isometric Bold'), url('../assets/fonts/3d_isometric/3D Isometric Bold.otf') format('otf');
 }
+
 li {
     list-style: none;
 }
@@ -155,26 +157,32 @@ body {
     font-family: 'Futura LT Regular';
 
 }
-button{
+
+button {
     font-family: 'Futura LT Light';
     border-radius: 16px;
     color: #fe882e;
 }
+
 button:hover {
     color: white;
-    background-color:#fe882e;
+    background-color: #fe882e;
 }
-object{
+
+object {
     height: 370px;
     width: 100%;
 }
-p#choose-color{
+
+p#choose-color {
     font-family: 'Futura LT LightOblique';
 }
-.app{
+
+.app {
     background-color: black;
     color: white;
 }
+
 .grey-out {
     position: fixed;
     top: 0px;
@@ -211,9 +219,10 @@ p#choose-color{
 #submitname {
     width: 70px;
     margin-top: 10px;
-    background-color:#006580;
-    color:white;
+    background-color: #006580;
+    color: white;
 }
+
 .invisible {
     display: none;
 }
@@ -222,28 +231,31 @@ p#choose-color{
     display: block;
 }
 
-.canvas{
+.canvas {
     border-radius: 16px;
-    margin-left: 11.5vw; 
+    margin-left: 11.5vw;
     margin-top: -6%;
     width: 800px;
     border-style: solid;
     border-color: #fe882e;
 }
-#colorHelp{
+
+#colorHelp {
     width: 66%;
     position: absolute;
     top: 366px;
     right: -22%;
     z-index: 10;
 }
-#closeColorPicker{
+
+#closeColorPicker {
     cursor: pointer;
     margin-top: 4%;
     margin-left: 282px;
     position: absolute;
 }
-#choice{
+
+#choice {
     width: 60%;
     text-align: center;
     padding: 10px;
@@ -251,6 +263,7 @@ p#choose-color{
     margin-top: 2%;
     margin-left: 4%;
 }
+
 .color-holder {
     background: #ff0000;
     cursor: pointer;
@@ -264,27 +277,30 @@ p#choose-color{
     border-radius: 10px;
 }
 
-.btn{
+.btn {
     width: 62%;
     font-size: 20px;
     margin-top: 10px;
     border-radius: 16px;
-    border-color:#006580;
+    border-color: #006580;
     font-family: '3D Isometric';
     color: black;
     background-color: #006580;
 
 }
-.btn:hover{
+
+.btn:hover {
     border-color: #fe882e;
     color: black;
 }
-.menu{
+
+.menu {
     width: 105%;
     margin-left: 4%;
 
 }
-.users{
+
+.users {
     width: 60%;
     padding: 10px;
     border-radius: 16px;
@@ -293,62 +309,83 @@ p#choose-color{
     margin-left: 4%;
     overflow: auto;
 }
-.toggleButton{
+
+.toggleButton {
     position: absolute;
     right: -142%;
     bottom: 15%;
     width: 20%;
 }
-.chatbox-header,.title{
+
+.chatbox-header,
+.title {
     font-family: '3D Isometric';
     text-align: center;
     color: #fe882e;
 }
-.word{
+
+.word {
     font-family: 'Futura LT LightOblique';
 }
-.word{
+
+.word {
     font-family: 'Futura LT LightOblique';
 }
-#logo{
+
+#logo {
     width: 75.5%;
     margin-left: 4%;
     margin-top: 0%;
 }
-#top-message{
+
+#top-message {
     position: absolute;
     border-radius: 16px;
     padding: 10px;
-    margin-top: 170px;
+    margin-top: 245px;
     width: 70%;
-    margin-left: 28.5vw;
+    margin-left: 1.2em;
 }
-#guesses{
+
+#guesses {
     width: 60%;
     padding: 10px;
     border-radius: 16px;
     margin-top: 2%;
     margin-left: 4%;
 }
-#guesses, #top-message,#choice,.users{
-    border-color:#006580;
-    border-style: solid; 
+
+#guesses,
+#top-message,
+#choice,
+.users {
+    border-color: #006580;
+    border-style: solid;
 }
-#color-btn, #stroke-btn, #submitguesss{
+
+#color-btn,
+#stroke-btn,
+#submitguesss {
     border-radius: 0 16px 16px 0;
     font-size: 14px;
     border-color: white;
     color: white;
     background-color: rgba(0, 0, 0, 0)
 }
-#color-btn:hover, #stroke-btn:hover, #submitguesss:hover{
+
+#color-btn:hover,
+#stroke-btn:hover,
+#submitguesss:hover {
     border-radius: 0 16px 16px 0;
     font-size: 14px;
     border-color: #fe882e;
     color: #fe882e;
     background-color: rgba(0, 0, 0, 0)
 }
-#pickcolor, .guess-input,#stroke-width-picker{
+
+#pickcolor,
+.guess-input,
+#stroke-width-picker {
     border-radius: 16px 0 0 16px;
     font-size: 12px;
     width: 35%;
@@ -359,17 +396,19 @@ p#choose-color{
     background-color: rgba(0, 0, 0, 0);
     color: white;
 }
-#help{
+
+#help {
     width: 66%;
     margin-top: 6px;
 }
+
 #scrollable::-webkit-scrollbar-thumb {
-  background-color: #fe882e;
-  border: 4px solid transparent;
-  border-radius: 8px;
-  background-clip: padding-box;  
+    background-color: #fe882e;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
 }
 
 #scrollable::-webkit-scrollbar {
-  width: 12px;
+    width: 12px;
 }
