@@ -46,26 +46,28 @@
                 <button id="stroke-btn">Change stroke width</button>
             </div>
         </div>
-        <div id="top-message">
-            <div class="draw">
-                <p>The secret word is: <span class="word"></span></p>
-            </div>
-            <form id="guess">
-                Guess the word : <input name="guess" class="guess-input" type="text">
-                <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
-            </form>
-        </div>
-        <div class="row">
-            <div class="users" id="scrollable">
-            </div>
-            <div id="guesses"></div>
 
+    </div>
+    <div class="row">
+        <div class="users" id="scrollable">
         </div>
+        <div id="guesses"></div>
 
-        <div id="colorHelp" class="invisible">
-            <span id="closeColorPicker" onclick="closeColorPicker()"> X</span>
-            <object data="./colorPicker.html" type="text/html" width="50%" height="350px" />
+    </div>
+    <div class="playerGuess">
+        <div class="draw">
+            <p>The secret word is: <span class="word"></span></p>
         </div>
+        <form id="guess">
+            Guess the word : <input name="guess" class="guess-input" type="text">
+            <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
+        </form>
+    </div>
+
+    <div id="colorHelp" class="invisible">
+        <span id="closeColorPicker" onclick="closeColorPicker()"> X</span>
+        <object data="./colorPicker.html" type="text/html" width="50%" height="350px" />
+    </div>
 
     </div>
 </body>

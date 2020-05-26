@@ -338,13 +338,13 @@ p#choose-color {
     margin-top: 0%;
 }
 
-#top-message {
+.playerGuess {
     position: absolute;
     border-radius: 16px;
     padding: 10px;
-    margin-top: 245px;
-    width: 70%;
-    margin-left: 25.2em;
+    margin-top: 2%;
+    text-align: center;
+    margin-left: 4%;
 }
 
 #guesses {
@@ -356,7 +356,7 @@ p#choose-color {
 }
 
 #guesses,
-#top-message,
+.playerGuess,
 #choice,
 .users {
     border-color: #006580;
