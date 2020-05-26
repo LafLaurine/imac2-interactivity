@@ -142,7 +142,7 @@
     font-family: '3D Isometric';
     font-style: normal;
     font-weight: normal;
-    src: local('3D Isometric'), url('../assets/fonts/3d_isometric/3D Isometric.otf') format('otf');
+    src: local('3D Isometric Bold'), url('../assets/fonts/3d_isometric/3D Isometric Bold.otf') format('otf');
 }
 li {
     list-style: none;
@@ -224,8 +224,8 @@ p#choose-color{
 
 .canvas{
     border-radius: 16px;
-    margin-left: 30%; 
-    margin-top: -8%;
+    margin-left: 11.5vw; 
+    margin-top: -6%;
     width: 800px;
     border-style: solid;
     border-color: #fe882e;
@@ -319,9 +319,9 @@ p#choose-color{
     position: absolute;
     border-radius: 16px;
     padding: 10px;
-    margin-top: 30%;
+    margin-top: 170px;
     width: 70%;
-    margin-left: 72%;
+    margin-left: 28.5vw;
 }
 #guesses{
     width: 60%;
