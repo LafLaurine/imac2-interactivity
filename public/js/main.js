@@ -52,6 +52,7 @@ function centerCanvas() {
 
 function globalSetup() {
     cv = createCanvas(windowWidth / 1.5, windowHeight / 1.5);
+    cv.addClass("canvas");
     pixelDensity(1);
     background(255);
     video = createCapture(VIDEO);
@@ -59,7 +60,8 @@ function globalSetup() {
     video.hide();
     centerCanvas();
 
-    button = createButton('toggle');
+    button = createButton('Toggle');
+    button.addClass('toggleButton');
     button.mousePressed(toggleSong);
     let sound = random(sounds)
     sound.play();
@@ -111,4 +113,16 @@ function setup() {
 
 function touchStarted() {
     getAudioContext().resume()
+}
+
+function showColorPicker() {
+  const colorPicker = document.querySelector("#colorHelp");
+  colorPicker.classList.remove("invisible");
+  colorPicker.classList.add("visible");
+}
+
+function closeColorPicker() {
+  const colorPicker = document.querySelector("#colorHelp");
+  colorPicker.classList.remove("visible");
+  colorPicker.classList.add("invisible");
 }

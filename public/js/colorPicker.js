@@ -2,7 +2,8 @@ let getColor;
 
 
 function setup() {
-	createCanvas(window.innerWidth - 5, window.innerHeight - 5);
+	const cav = createCanvas(window.innerWidth, window.innerHeight);
+	cav.addClass('test');
 }
 
 function preload() {
@@ -21,13 +22,13 @@ function rgbToHex(r, g, b) {
 function draw() {
 	background(100);
 	push();
-	image(colorWheel, 0, 0);
+	image(colorWheel, 10, 10);
 	getColor = colorWheel.get(mouseX, mouseY);
 
 	push();
 	stroke(getColor[0], getColor[1], getColor[2]);
 	fill(getColor[0], getColor[1], getColor[2], 100);
-	ellipse(width * 0.5, height * 0.5, 133, 133);
+	ellipse(width - 180, height * 0.5 + 100, 50, 50);
 	pop();
 
 
@@ -40,7 +41,7 @@ function draw() {
 	noStroke();
 	textSize(33);
 	textFont('Source Code Pro');
-	textAlign(CENTER, CENTER);
+	textAlign(LEFT, CENTER);
 	textStyle(BOLD);
 	text(rgbToHex(getColor[0], getColor[1], getColor[2]), width * 0.5, height * 0.8);
 	pop();

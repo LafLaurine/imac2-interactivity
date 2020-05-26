@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head class ="app">
     <meta charset="UTF-8">
     <title>Let's draw</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
@@ -15,47 +15,55 @@
     <script type="text/javascript" src="js/pictionary.js"></script>
 </head>
 
-<body>
-    <button class="btn" onclick="showPage(0)">Pictionary</button>
-    <button class="btn" onclick="showPage(1)">Camera</button>
+<body class ="app">
+    <img src="assets/img/LOGO2_V2.png" id="logo">
+    <div class="menu">
+        <button class="btn" onclick="showPage(0)">Pictionary</button><br>
+        <button class="btn" onclick="showPage(1)">Camera</button>
+    </div>
     <div class="grey-out">
-        <form class="user"><label for="username">Enter a username </label><input id="username" type="text"
-                placeholder="Username" maxlength="14" autofocus>
+         <form class="user">
+            <label for="username">Enter a username </label>
+            <input id="username" type="text" placeholder="Username" maxlength="14" autofocus>
             <button type="submit" id="submitname" onclick="submitUserName()">Submit</button>
         </form>
     </div>
 
     <div id="game">
-        <div id="color-picker">
-            <a href="./colorPicker.html"><button id="help" onclick=showColorPicker()>Need help to choose color
-                    ?</button></a>
-            <p id="choose-color">Choose color (# hex)</p>
-            <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
-            <div id="color-holder" class="color-holder call-picker"></div>
-            <button id="color-btn">Change color</button>
-        </div>
-
-        <div id="stroke-picker">
-            <p>Choose stroke width</p>
-            <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker"
-                class="stroke_width_picker" />
-            <button id="stroke-btn">Change stroke width</button>
-        </div>
-
-        <div class="row">
-            <div class="users">
+        <div id="choice">
+             <div id="color-picker">
+                <p id="choose-color"><span class="title">Choose color </span>(# hex)</p>
+                <input type="text" name="custom_color" placeholder="#ff0000" id="pickcolor" class="call-picker" />
+                <div id="color-holder" class="color-holder call-picker"></div>
+                <button id="color-btn">Change color</button>
+                <!-- <button id="help" onclick="showColorPicker()">Need help to choose color?</button> -->
             </div>
-            <div id="guesses"></div>
 
+            <div id="stroke-picker">
+                <p><span class="title">Choose stroke width</span></p>
+                <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker"
+                    class="stroke_width_picker" />
+                <button id="stroke-btn">Change stroke width</button>
+            </div>
         </div>
         <div id="top-message">
             <div class="draw">
                 <p>The secret word is: <span class="word"></span></p>
             </div>
             <form id="guess">
-                Guess the word! <input name="guess" class="guess-input" type="text">
+                Guess the word : <input name="guess" class="guess-input" type="text">
+                <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
             </form>
-            <button type="submit" id="submitguesss" onclick="submitGuess()">Submit</button>
+        </div>
+        <div class="row">
+            <div class="users" id="scrollable">
+            </div>
+            <div id="guesses"></div>
+
+        </div>
+        <div id="colorHelp" class="invisible">
+            <span id="closeColorPicker" onclick="closeColorPicker()"> X</span>
+            <object data="./colorPicker.html" type="text/html"  width="50%" height="350px"/>
         </div>
     </div>
 </body>
