@@ -20,29 +20,22 @@ function rgbToHex(r, g, b) {
 }
 
 function draw() {
-	background(100);
+	background(254,136,46);
 	push();
 	image(colorWheel, 10, 10);
 	getColor = colorWheel.get(mouseX, mouseY);
-
-	push();
-	stroke(getColor[0], getColor[1], getColor[2]);
-	fill(getColor[0], getColor[1], getColor[2], 100);
-	ellipse(width - 180, height * 0.5 + 100, 50, 50);
-	pop();
-
 
 	fill(getColor);
 	ellipse(mouseX, mouseY, 33, 33);
 	pop();
 
 	push();
-	fill(217);
+	fill(255, 255, 255);
 	noStroke();
 	textSize(33);
 	textFont('Source Code Pro');
-	textAlign(LEFT, CENTER);
+	textAlign(CENTER, CENTER);
 	textStyle(BOLD);
-	text(rgbToHex(getColor[0], getColor[1], getColor[2]), width * 0.5, height * 0.8);
+	text(rgbToHex(getColor[0], getColor[1], getColor[2]), width * 0.5, height * 0.5 + 100);
 	pop();
 }

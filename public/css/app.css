@@ -170,8 +170,12 @@ button:hover {
 }
 
 object {
-    height: 370px;
-    width: 100%;
+    width: 233px;
+    height: 319px;
+    background-color: #fe882e;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 p#choose-color {
@@ -241,17 +245,17 @@ p#choose-color {
 }
 
 #colorHelp {
-    width: 66%;
+    width: 53%;
     position: absolute;
-    top: 366px;
-    right: -22%;
+    top: 310px;
+    right: -13%;
     z-index: 10;
 }
 
 #closeColorPicker {
     cursor: pointer;
     margin-top: 4%;
-    margin-left: 282px;
+    margin-left: 217px;
     position: absolute;
 }
 
@@ -305,7 +309,7 @@ p#choose-color {
     padding: 10px;
     border-radius: 16px;
     margin-top: 2%;
-    height: 148px;
+    height: 125px;
     margin-left: 4%;
     overflow: auto;
 }
