@@ -234,7 +234,7 @@ p#choose-color {
 .canvas {
     border-radius: 16px;
     margin-left: 11.5vw;
-    margin-top: -6%;
+    margin-top: 20px;
     width: 800px;
     border-style: solid;
     border-color: #fe882e;
@@ -333,9 +333,9 @@ p#choose-color {
 }
 
 #logo {
-    width: 75.5%;
-    margin-left: 4%;
-    margin-top: 0%;
+    width: 52.5%;
+    margin-left: 15%;
+    transform: rotate(5deg);
 }
 
 .playerGuess {
@@ -344,6 +344,7 @@ p#choose-color {
     padding: 10px;
     margin-left: 4%;
     text-align: center;
+    width: 60%;
     margin-top: 2%;
 }
 
