@@ -18,6 +18,7 @@ function setUpCamera() {
     song = random(sounds);
     song.play();
     song.amp(0.3);
+    song.loop();
 }
 
 function drawWebcam() {
