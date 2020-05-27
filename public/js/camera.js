@@ -10,10 +10,6 @@ function hexToRgb(hex) {
     } : null;
 }
 
-function windowResized() {
-    resizeCanvas(windowWidth / 1.5, windowHeight / 1.5);
-}
-
 function setUpCamera() {
     song = random(sounds);
     song.play();

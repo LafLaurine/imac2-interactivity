@@ -32,12 +32,18 @@ let pages = [{
 function preload() {
     sounds.push(loadSound('/assets/audio/music.mp3'));
     sounds.push(loadSound('/assets/audio/music2.mp3'));
+    sounds.push(loadSound('/assets/audio/music3.mp3'));
 }
 
 function centerCanvas() {
     const x = (windowWidth - width) / 2
     const y = (windowHeight - height) / 2
     cv.position(x, y)
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth / 1.5, windowHeight / 1.5, true);
+    background(255);
 }
 
 function globalSetup() {

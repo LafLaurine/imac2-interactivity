@@ -8,9 +8,9 @@ const words = [
     "word", "letter", "number", "person", "pen", "police", "fire",
     "earth", "water", "M.Robillard", "university", "fish", "joke", "wire", "transport",
     "ankle", "pillow", "temple", "fairy", "route", "Victorine", "Laurine", "horoscope",
-    "book", "dream", "vegetation", "birthday", "forest", "victory", "marriage", 
+    "book", "dream", "vegetation", "birthday", "forest", "victory", "marriage",
     "rich", "chocolate", "soak", "space", "pool", "gun", "quest", "survey", "bathroom",
-    "dance", "art", "fork", "beer", "leaflet"
+    "dance", "art", "fork", "beer", "leaflet", "music", "river", "car", "world", "head", "page", "country"
 ];
 
 function newWord() {
@@ -74,7 +74,7 @@ io.sockets.on('connection', (socket) => {
         // save the name of the user to an array called users
         users.push(socket.username);
         // if the user is first to join OR 'drawer' room has no connections
-        if (users.length == 1 || typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
+        if (users.length === 1 || typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
             // place user into 'drawer' room
             socket.join('drawer');
             // server submits the 'drawer' event to this user
@@ -166,6 +166,16 @@ io.sockets.on('connection', (socket) => {
         console.log(socket.username + ' has disconnected + number of player : ' + users.length);
         // submit updated users list to all clients
         io.emit('userlist', users);
+
+        // if 'drawer' room has no connections..
+        if (typeof io.sockets.adapter.rooms['drawer'] === "undefined") {
+
+            // generate random number based on length of users list
+            let x = Math.floor(Math.random() * (users.length));
+
+            // submit new drawer event to the random user in userslist
+            io.in(users[x]).emit('new drawer', users[x]);
+        };
     });
 });
 

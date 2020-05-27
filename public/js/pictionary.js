@@ -4,11 +4,6 @@ let strokeWidth = 4
 let user;
 let users = [];
 
-function windowResized() {
-    resizeCanvas(windowWidth / 1.5, windowHeight / 1.5);
-    background(255);
-}
-
 function submitUserName() {
     event.preventDefault();
     user = document.querySelector("#username").value;
@@ -127,7 +122,6 @@ function submitGuess() {
 let guessword = function (data) {
     document.querySelector('#guesses').innerHTML += data.username + "'s guess: " + data.guessword;
     if (data.guessword === document.querySelector('.word').innerHTML) {
-        console.log('guesser: ' + data.username + ' draw-word: ' + document.querySelector('.word').innerHTML);
         socket.emit('correct answer', {
             username: data.username,
             guessword: data.guessword
@@ -141,13 +135,11 @@ let guessword = function (data) {
         let textNode = document.createTextNode(data.username + " gave a wrong answer");
         element.appendChild(textNode);
         document.querySelector('#guesses').appendChild(element);
-        console.log("wrong answer");
     }
 };
 
 let drawWord = function (word) {
     document.querySelector('.word').innerHTML = word;
-    console.log('Your word to draw is: ' + word);
 };
 
 let correctAnswer = function (data) {
@@ -161,7 +153,8 @@ let reset = function (name) {
 };
 
 let newDrawer = function () {
+    document.querySelector('#guesses').innerHTML = " ";
+    document.querySelector('.word').innerHTML = " ";
     socket.emit('new drawer', user);
     clear();
-    document.querySelector('#guesses').innerHTML = "";
 };
