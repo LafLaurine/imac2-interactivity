@@ -37,19 +37,25 @@ let userlist = function (names) {
     document.querySelector('.users').innerHTML = html;
 };
 
+function pictionary() {
+    // We make a named event called 'mouse' and write an
+    // anonymous callback function
+    if (socket.room = "drawer") {
+        socket.on('mouse', data => {
+            stroke(data.color)
+            strokeWeight(data.strokeWidth)
+            line(data.x, data.y, data.px, data.py)
+        })
+    }
+}
+
 
 function setUpSketch() {
     song = random(sounds);
     song.play();
     song.amp(0.3);
     song.loop();
-    // We make a named event called 'mouse' and write an
-    // anonymous callback function
-    socket.on('mouse', data => {
-        stroke(data.color)
-        strokeWeight(data.strokeWidth)
-        line(data.x, data.y, data.px, data.py)
-    })
+
     const stroke_width_picker = select('#stroke-width-picker')
     const stroke_btn = select('#stroke-btn')
     // Adding a mousePressed listener to the button
@@ -57,7 +63,7 @@ function setUpSketch() {
         const width = parseInt(stroke_width_picker.value())
         if (width > 0) strokeWidth = width
     })
-
+    pictionary();
     socket.on('userlist', userlist);
     socket.on('guesser', guesser);
     socket.on('guessword', guessword);
@@ -156,8 +162,16 @@ let reset = function (name) {
 };
 
 let newDrawer = function () {
+    socket.emit('new drawer', user);
     document.querySelector('#guesses').innerHTML = " ";
     document.querySelector('.word').innerHTML = " ";
-    socket.emit('new drawer', user);
     clear();
 };
+
+//clear Canvas
+function keyPressed() {
+    if (keyCode === ESCAPE) {
+        clear();
+        background(255);
+    }
+}
