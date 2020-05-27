@@ -235,6 +235,10 @@ p#choose-color {
     display: block;
 }
 
+.draw {
+    display: block;
+}
+
 .canvas {
     border-radius: 16px;
     margin-left: 11.5vw;

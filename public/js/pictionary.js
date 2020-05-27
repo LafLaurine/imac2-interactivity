@@ -96,6 +96,7 @@ function sendMouse(x, y, pX, pY) {
 
 let guesser = function () {
     console.log('You are a guesser');
+    document.querySelector('.draw').style.display = 'none';
     document.querySelector('.guess-input').focus();
 };
 
@@ -106,11 +107,11 @@ function submitGuess() {
     if (guess == '') {
         return false
     };
+
     const element = document.createElement('p');
     let textNode = document.createTextNode(user + "'s guess: " + guess);
     element.appendChild(textNode);
     document.querySelector('.users').appendChild(element);
-    console.log(user + "'s guess: " + guess);
     socket.emit('guessword', {
         username: user,
         guessword: guess
@@ -139,6 +140,7 @@ let guessword = function (data) {
 };
 
 let drawWord = function (word) {
+    document.querySelector('.draw').style.display = 'block';
     document.querySelector('.word').innerHTML = word;
 };
 
@@ -147,7 +149,10 @@ let correctAnswer = function (data) {
 };
 
 let reset = function (name) {
-    document.querySelector('#guesses').innerHTML = "";
+    clear();
+    background(255);
+    document.querySelector('#guesses').innerHTML = " ";
+    document.querySelector('.draw').style.display = 'block';
     console.log('New drawer: ' + name);
     document.querySelector('#guesses').innerHTML += '<p>' + name + ' is the new drawer' + '</p>';
 };
