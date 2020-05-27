@@ -143,7 +143,7 @@
     font-family: '3D Isometric';
     font-style: normal;
     font-weight: normal;
-    src: local('3D Isometric Bold'), url('../assets/fonts/3d_isometric/3D Isometric Bold.otf') format('otf');
+    src: local('3D Isometric Bold'), url('../assets/fonts/3d_isometric/3D Isometric Bold.woff') format('woff');
 }
 
 li {

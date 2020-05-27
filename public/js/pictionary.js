@@ -1,6 +1,6 @@
-//Keep trace of socket connection
-let socket
-let strokeWidth = 4
+// Start a socket connection to the server
+let socket = io.connect('http://localhost:3000');
+let strokeWidth = 4;
 let user;
 let users = [];
 
@@ -43,8 +43,6 @@ function setUpSketch() {
     song.play();
     song.amp(0.3);
     song.loop();
-    // Start a socket connection to the server
-    socket = io.connect('http://localhost:3000')
     // We make a named event called 'mouse' and write an
     // anonymous callback function
     socket.on('mouse', data => {
