@@ -358,6 +358,8 @@ p#choose-color {
     border-radius: 16px;
     margin-top: 2%;
     margin-left: 4%;
+    height: 50px;
+    overflow: auto;
 }
 
 #guesses,
@@ -407,13 +409,13 @@ p#choose-color {
     margin-top: 6px;
 }
 
-#scrollable::-webkit-scrollbar-thumb {
+.scrollable::-webkit-scrollbar-thumb {
     background-color: #fe882e;
     border: 4px solid transparent;
     border-radius: 8px;
     background-clip: padding-box;
 }
 
-#scrollable::-webkit-scrollbar {
+.scrollable::-webkit-scrollbar {
     width: 12px;
 }
